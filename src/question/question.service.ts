@@ -33,13 +33,27 @@ export class QuestionService {
     return null;
   }
 
-  givePoint(question: IQuestion): void {
+  givePoint(questionToFind: IQuestion): void {
     this.getAll().then(questions => {
-      for (let q of questions) {
-        if (q.id === question.id) q.points ++;
+      for (let question of questions) {
+        if (question.id === questionToFind.id) {
+            question.points ++;
+            if (!question.likes) question.likes = [];
+            let me = this.storage.get('sessionKey');
+            question.likes.push(me);
+        }
       }
       this.storage.setObject('questions', questions);
     });
+  }
+
+  alreadyLiked(sessionKey: string, likes: Array<string>): boolean {
+    if (likes) {
+      for (let like of likes) {
+        if (like === sessionKey) return true;
+      }
+    }
+    return false;
   }
 
   create(question: string): void {
