@@ -3,25 +3,18 @@ import { NavController } from 'ionic-angular';
 
 import { EVENT } from '../../config/config.const';
 import { IQuestion } from '../iquestion';
+import { QuestionService } from '../question.service';
 
 @Component({
   selector: 'question-list',
   templateUrl: 'question.list.html'
 })
 export class QuestionList {
-  eventName: string = EVENT;
   questions: IQuestion[];
+  eventName: string = EVENT;
 
-  constructor(public navCtrl: NavController) {
-    this.questions = [
-      {
-        id: 1,
-        question: 'que es lo que vo so?',
-        points: 10,
-        author: 'voviteh',
-        date: new Date()
-      }
-    ]
+  constructor(public navCtrl: NavController, private service: QuestionService) {
+    service.getAll().then(questions => this.questions = questions);
   }
 
 }

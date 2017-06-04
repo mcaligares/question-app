@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { QuestionList } from '../question/list/question.list';
 import { QuestionDetail } from '../question/detail/question.detail';
-
+import { QuestionService } from '../question/question.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import { QuestionDetail } from '../question/detail/question.detail';
   providers: [
     StatusBar,
     SplashScreen,
+    QuestionService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
