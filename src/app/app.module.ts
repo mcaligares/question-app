@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { StorageService } from '../utils/storage.service';
 import { QuestionList } from '../question/list/question.list';
 import { QuestionDetail } from '../question/detail/question.detail';
 import { QuestionService } from '../question/question.service';
@@ -28,6 +29,7 @@ import { QuestionService } from '../question/question.service';
   providers: [
     StatusBar,
     SplashScreen,
+    StorageService,
     QuestionService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
