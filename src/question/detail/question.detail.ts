@@ -11,20 +11,30 @@ import { QuestionService } from '../question.service';
 })
 export class QuestionDetail {
   @Input() data: IQuestion;
+  disableQuestion: boolean;
 
   constructor(public navCtrl: NavController,
               private auth: AuthService,
               private service: QuestionService) {
+  }
 
+  ngOnInit() {
+    let me = this.auth.getSessionKey();
+    this.service.get(this.data.id).then((question) => {
+      this.disableQuestion = this.service.alreadyLiked(me, question.likes);
+    });
   }
 
   givePoint() {
-    let likes = this.data.likes;
     let me = this.auth.getSessionKey();
-    if (!this.service.alreadyLiked(me, likes)) {
-      this.service.givePoint(this.data);
-      this.data.points ++;
+    let givePointIfIsAllowed = (question) => {
+      if (!this.service.alreadyLiked(me, question.likes)) {
+        this.service.givePoint(question);
+        this.data.points ++;
+        this.disableQuestion = true;
+      }
     }
+    this.service.get(this.data.id).then(givePointIfIsAllowed);
   }
 
 }

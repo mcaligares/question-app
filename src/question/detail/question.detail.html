@@ -12,7 +12,7 @@
             </button>
         </ion-col>
         <ion-col text-right>
-            <button ion-button clear small color="info" icon-left (click)="givePoint()">
+            <button [disabled]="disableQuestion" ion-button clear small color="info" icon-left (click)="givePoint()">
                 <ion-icon name='thumbs-up'></ion-icon>
                 Me gusta
             </button>
