@@ -15,4 +15,19 @@ export class QuestionService {
     return Promise.resolve(this.storage.getObject('questions'));
   }
 
+  get(id: number): Promise<IQuestion> {
+    return new Promise<IQuestion>(resolve => {
+      this.getAll().then(questions => {
+        resolve(this.findQuestion(id, questions));
+      });
+    });
+  }
+
+  findQuestion(id: number, questions: IQuestion[]): IQuestion {
+    for (let question of questions) {
+      if (question.id === id) return question;
+    }
+    return null;
+  }
+
 }
