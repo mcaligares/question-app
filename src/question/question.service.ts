@@ -8,7 +8,10 @@ import { StorageService } from '../utils/storage.service';
 export class QuestionService {
 
   constructor(private storage: StorageService) {
-    storage.setObject('questions', SAMPLE_QUESTIONS);
+    let questions = storage.getObject('questions');
+    if (questions.length === undefined) {
+      storage.setObject('questions', SAMPLE_QUESTIONS);
+    }
   }
 
   getAll(): Promise<IQuestion[]> {
@@ -28,6 +31,15 @@ export class QuestionService {
       if (question.id === id) return question;
     }
     return null;
+  }
+
+  givePoint(question: IQuestion): void {
+    this.getAll().then(questions => {
+      for (let q of questions) {
+        if (q.id === question.id) q.points ++;
+      }
+      this.storage.setObject('questions', questions);
+    });
   }
 
 }
