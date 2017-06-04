@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 import { IQuestion } from '../iquestion';
 import { QuestionService } from '../question.service';
@@ -9,12 +9,11 @@ import { QuestionService } from '../question.service';
   templateUrl: 'question.detail.html'
 })
 export class QuestionDetail {
-  data: IQuestion;
+  @Input() data: IQuestion;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
               private service: QuestionService) {
-    this.data = navParams.data;
+
   }
 
   givePoint() {

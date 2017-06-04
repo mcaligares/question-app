@@ -1,5 +1,4 @@
-import { IQuestion } from './iquestion';
-
+import { IQuestion } from '../question/iquestion';
 
 export const SAMPLE_QUESTIONS: IQuestion[] = [
   {

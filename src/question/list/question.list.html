@@ -1,14 +1,17 @@
 <ion-header>
     <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>{{eventName}}</ion-title>
     </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
     <ion-list>
-        <ion-item *ngFor="let item of questions" (click)="questionDetail(item)">
-            {{item.question}}
-        </ion-item>
+        <question-detail *ngFor="let item of questions" [data]="item">
+        </question-detail>
     </ion-list>
     <ion-fab right bottom>
         <button ion-fab (click)="newQuestion()">

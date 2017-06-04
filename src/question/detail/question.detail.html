@@ -1,29 +1,21 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>Pregunta</ion-title>
-    </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-    <ion-card>
-        <ion-card-content>
-            <p>
-                {{data.question}}
-            </p>
-        </ion-card-content>
-        <ion-row no-padding>
-            <ion-col>
-                <button ion-button clear small color="warning" icon-left>
-                    <ion-icon name='star'></ion-icon>
-                    {{data.points}}
-                </button>
-            </ion-col>
-            <ion-col text-right>
-                <button ion-button clear small color="info" icon-left (click)="givePoint()">
-                    <ion-icon name='thumbs-up'></ion-icon>
-                    Me gusta
-                </button>
-            </ion-col>
-        </ion-row>
-    </ion-card>
-</ion-content>
+<ion-card *ngIf="data">
+    <ion-card-content>
+        <p>
+            {{data.question}}
+        </p>
+    </ion-card-content>
+    <ion-row no-padding>
+        <ion-col>
+            <button ion-button clear small color="warning" icon-left>
+                <ion-icon name='star'></ion-icon>
+                {{data.points}}
+            </button>
+        </ion-col>
+        <ion-col text-right>
+            <button ion-button clear small color="info" icon-left (click)="givePoint()">
+                <ion-icon name='thumbs-up'></ion-icon>
+                Me gusta
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-card>

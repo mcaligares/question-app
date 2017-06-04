@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { IQuestion } from './iquestion';
-import { SAMPLE_QUESTIONS } from './sample.data';
+import { SAMPLE_QUESTIONS } from '../utils/sample.data';
 import { StorageService } from '../utils/storage.service';
 
 @Injectable()
@@ -43,12 +43,13 @@ export class QuestionService {
   }
 
   create(question: string): void {
+    let author = this.storage.get('sessionKey');
     this.getAll().then(questions => {
       let data: IQuestion = {
         id: 1,
         question: question,
         points: 0,
-        author: 'migue',
+        author: author,
         date: new Date()
       }
       questions.push(data);

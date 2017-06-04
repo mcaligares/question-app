@@ -5,13 +5,16 @@
 </ion-header>
 
 <ion-content padding>
+    <p>
+        {{label}}
+    </p>
     <form (ngSubmit)="createQuestion()">
       <ion-item>
         <ion-textarea [(ngModel)]="question" name="question">
         </ion-textarea>
       </ion-item>
       <button ion-button type="submit" block>
-          Enviar Pregunta
+          Enviar
       </button>
     </form>
 </ion-content>
