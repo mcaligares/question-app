@@ -32,4 +32,8 @@ export class QuestionList {
     this.navCtrl.push(QuestionCreate);
   }
 
+  openWeb() {
+    window.open('http://www.stallmanenjujuy.org/','_system');
+  }
+
 }
