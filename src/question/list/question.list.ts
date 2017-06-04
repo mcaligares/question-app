@@ -15,8 +15,12 @@ export class QuestionList {
   questions: IQuestion[];
   eventName: string = EVENT;
 
-  constructor(public navCtrl: NavController, private service: QuestionService) {
-    service.getAll().then(questions => this.questions = questions);
+  constructor(public navCtrl: NavController,
+              private service: QuestionService) {
+  }
+
+  ionViewWillEnter() {
+    this.service.getAll().then(questions => this.questions = questions);
   }
 
   questionDetail(question: IQuestion) {

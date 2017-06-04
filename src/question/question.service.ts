@@ -21,12 +21,12 @@ export class QuestionService {
   get(id: number): Promise<IQuestion> {
     return new Promise<IQuestion>(resolve => {
       this.getAll().then(questions => {
-        resolve(this.findQuestion(id, questions));
+        resolve(this.find(id, questions));
       });
     });
   }
 
-  findQuestion(id: number, questions: IQuestion[]): IQuestion {
+  find(id: number, questions: IQuestion[]): IQuestion {
     for (let question of questions) {
       if (question.id === id) return question;
     }
@@ -38,6 +38,20 @@ export class QuestionService {
       for (let q of questions) {
         if (q.id === question.id) q.points ++;
       }
+      this.storage.setObject('questions', questions);
+    });
+  }
+
+  create(question: string): void {
+    this.getAll().then(questions => {
+      let data: IQuestion = {
+        id: 1,
+        question: question,
+        points: 0,
+        author: 'migue',
+        date: new Date()
+      }
+      questions.push(data);
       this.storage.setObject('questions', questions);
     });
   }

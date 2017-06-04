@@ -15,7 +15,8 @@ export class QuestionCreate {
   }
 
   createQuestion() {
-    console.log('question', this.question);
+    this.service.create(this.question);
+    this.navCtrl.popToRoot();
   }
 
 }
