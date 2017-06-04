@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { StorageService } from '../utils/storage.service';
 import { QuestionList } from '../question/list/question.list';
+import { QuestionCreate } from '../question/create/question.create';
 import { QuestionDetail } from '../question/detail/question.detail';
 import { QuestionService } from '../question/question.service';
 
@@ -14,7 +15,8 @@ import { QuestionService } from '../question/question.service';
   declarations: [
     MyApp,
     QuestionList,
-    QuestionDetail
+    QuestionDetail,
+    QuestionCreate
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { QuestionService } from '../question/question.service';
   entryComponents: [
     MyApp,
     QuestionList,
-    QuestionDetail
+    QuestionDetail,
+    QuestionCreate
   ],
   providers: [
     StatusBar,

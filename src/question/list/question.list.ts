@@ -5,6 +5,7 @@ import { EVENT } from '../../config/config.const';
 import { IQuestion } from '../iquestion';
 import { QuestionService } from '../question.service';
 import { QuestionDetail } from '../detail/question.detail';
+import { QuestionCreate } from '../create/question.create';
 
 @Component({
   selector: 'question-list',
@@ -20,6 +21,10 @@ export class QuestionList {
 
   questionDetail(question: IQuestion) {
     this.navCtrl.push(QuestionDetail, question);
+  }
+
+  newQuestion() {
+    this.navCtrl.push(QuestionCreate);
   }
 
 }

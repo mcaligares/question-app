@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Nueva Pregunta</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form (ngSubmit)="createQuestion()">
+      <ion-item>
+        <ion-textarea [(ngModel)]="question" name="question">
+        </ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" block>
+          Enviar Pregunta
+      </button>
+    </form>
+</ion-content>
