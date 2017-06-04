@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AuthService } from '../utils/auth.service';
 import { Biography } from '../contents/biography/biography';
 import { Conference } from '../contents/conference/conference';
 import { FreeSoft } from '../contents/freesoftware/freesoft';
@@ -18,8 +19,10 @@ export class MyApp {
 
   constructor(public platform: Platform,
               public statusBar: StatusBar,
-              public splashScreen: SplashScreen) {
+              public splashScreen: SplashScreen,
+              private auth: AuthService) {
     this.initialize();
+    this.authenticate();
     this.pages = [
       { title: 'Preguntas', icon: 'chatbubbles', component: QuestionList },
       { title: 'Biografía', icon: 'person', component: Biography },
@@ -35,6 +38,12 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  authenticate() {
+    if (!this.auth.isLogged()) {
+      this.auth.logIn();
+    }
   }
 
   openPage(page) {

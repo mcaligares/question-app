@@ -6,7 +6,6 @@ import { IQuestion } from '../iquestion';
 import { QuestionService } from '../question.service';
 import { QuestionDetail } from '../detail/question.detail';
 import { QuestionCreate } from '../create/question.create';
-import { AuthService } from '../../utils/auth.service';
 
 @Component({
   selector: 'question-list',
@@ -17,11 +16,8 @@ export class QuestionList {
   eventName: string = EVENT;
 
   constructor(public navCtrl: NavController,
-              private service: QuestionService,
-              private auth: AuthService) {
-    if (!auth.isLogged()) {
-      auth.logIn();
-    }
+              private service: QuestionService) {
+
   }
 
   ionViewWillEnter() {
