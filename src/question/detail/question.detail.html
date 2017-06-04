@@ -1,14 +1,29 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Question Detail
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Pregunta</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-card>
+        <ion-card-content>
+            <p>
+                {{data.question}}
+            </p>
+        </ion-card-content>
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="warning" icon-left>
+                    <ion-icon name='star'></ion-icon>
+                    {{data.points}}
+                </button>
+            </ion-col>
+            <ion-col text-right>
+                <button ion-button clear small color="info" icon-left>
+                    <ion-icon name='thumbs-up'></ion-icon>
+                    Me gusta
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
 </ion-content>

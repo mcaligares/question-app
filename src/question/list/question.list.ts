@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { EVENT } from '../../config/config.const';
 import { IQuestion } from '../iquestion';
 import { QuestionService } from '../question.service';
+import { QuestionDetail } from '../detail/question.detail';
 
 @Component({
   selector: 'question-list',
@@ -15,6 +16,10 @@ export class QuestionList {
 
   constructor(public navCtrl: NavController, private service: QuestionService) {
     service.getAll().then(questions => this.questions = questions);
+  }
+
+  questionDetail(question: IQuestion) {
+    this.navCtrl.push(QuestionDetail, question);
   }
 
 }

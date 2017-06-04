@@ -6,7 +6,7 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-item *ngFor="let item of questions">
+        <ion-item *ngFor="let item of questions" (click)="questionDetail(item)">
             {{item.question}}
         </ion-item>
     </ion-list>
