@@ -20,4 +20,8 @@ export class StorageService {
     this.set(key, JSON.stringify(obj));
   }
 
+  remove(key: string): void {
+    localStorage.removeItem(key);
+  }
+
 }
